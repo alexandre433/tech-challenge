@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resources([
     'genres' => GenreController::class,
+    'movies' => MovieController::class,
 ]);
