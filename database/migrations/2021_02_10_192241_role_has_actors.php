@@ -20,11 +20,15 @@ class RoleHasActors extends Migration
 
             $table->foreign('role_id')
                 ->on('movie_roles')
-                ->references('id');
+                ->references('id')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->foreign('actor_id')
                 ->on('actors')
-                ->references('id');
+                ->references('id')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

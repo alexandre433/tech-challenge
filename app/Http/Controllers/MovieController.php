@@ -79,12 +79,10 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        $response = DB::transaction(function () use ($movie) {
+        DB::transaction(function () use ($movie) {
             $movie->delete();
         });
 
-        return response()->noContent(
-            $response ? 204 : 500
-        );
+        return response()->noContent();
     }
 }

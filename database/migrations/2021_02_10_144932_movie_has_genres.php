@@ -20,11 +20,15 @@ class MovieHasGenres extends Migration
 
             $table->foreign('movie_id')
                 ->references('id')
-                ->on('movies');
+                ->on('movies')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->foreign('genre_id')
                 ->references('id')
-                ->on('genres');
+                ->on('genres')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
