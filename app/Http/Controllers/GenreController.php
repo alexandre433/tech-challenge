@@ -6,6 +6,7 @@ use App\Http\Controllers\Traits\HasFetchAllRenderCapabilities;
 use App\Http\Requests\GenreRequest;
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class GenreController extends Controller
@@ -79,5 +80,23 @@ class GenreController extends Controller
         $genre->delete();
 
         return response()->noContent();
+    }
+
+    public function actors(Genre $genre)
+    {
+        $actors = collect();
+        foreach ($genre->movies as $movie) {
+            foreach ($movie->roles as $role) {
+                foreach ($role->actors as $actor) {
+                    $actors->push($actor);
+                }
+            }
+        }
+
+        return new JsonResource(
+            $actors->unique('id')
+                ->sortBy('id')
+                ->toArray()
+        );
     }
 }

@@ -87,4 +87,10 @@ class ActorController extends Controller
             $response ? 204 : 500
         );
     }
+
+    public function appearances(Actor $actor)
+    {
+        $actor->load(['roles', 'roles.movies']);
+        return new JsonResource($actor->toArray());
+    }
 }

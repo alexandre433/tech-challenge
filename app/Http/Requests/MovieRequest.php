@@ -25,11 +25,11 @@ class MovieRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:1', 'max:255'],
-            'year' => ['required', 'numeric', 'max:' . date('Y') + 10],
+            'year' => ['required', 'integer', 'max:' . (date('Y') + 10)],
             'synopsis' => ['required', 'string', 'min:1', 'max:255'],
-            'runtime' => ['required', 'numeric', 'min:1', 'max:600'],
-            'released_at' => ['required', 'date'],
-            'cost' => ['required', 'numeric'],
+            'runtime' => ['required', 'integer', 'min:1', 'max:600'],
+            'released_at' => ['required', 'date_format:d/m/Y'],
+            'cost' => ['required', 'integer'],
         ];
     }
 }

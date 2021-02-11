@@ -17,7 +17,8 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return ResourceCollection
      */
     public function index(Request $request)
     {
@@ -30,8 +31,8 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  MovieRequest  $request
+     * @return JsonResource
      */
     public function store(MovieRequest $request)
     {
@@ -45,8 +46,8 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param  Movie  $movie
+     * @return JsonResource
      */
     public function show(Movie $movie)
     {
@@ -56,9 +57,9 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param  Movie  $movie
+     * @param  MovieRequest  $request
+     * @return JsonResource
      */
     public function update(Movie $movie, MovieRequest $request)
     {
@@ -73,7 +74,7 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Movie  $movie
+     * @param  Movie  $movie
      * @return \Illuminate\Http\Response
      */
     public function destroy(Movie $movie)
